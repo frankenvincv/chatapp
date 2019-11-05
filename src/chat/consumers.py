@@ -2,14 +2,15 @@ from django.contrib.auth import get_user_model
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 import json
-from .models import Message
+from .models import Message, Chat, Contact
+from .views import get_last_10_messages, get_user_contact, get_current_chat
 
 User = get_user_model()
 
 class ChatConsumer(WebsocketConsumer):
 
     def fetch_messages(self, data):
-        messages = Message.last_10_messages()
+        messages = get_last_10_messages(data['chatId'])
         content = {
             'command': 'messages',
             'messages': self.messages_to_json(messages)
@@ -17,11 +18,13 @@ class ChatConsumer(WebsocketConsumer):
         self.send_message(content)
 
     def new_message(self, data):
-        author = data['from']
-        author_user = User.objects.filter(username=author)[0]
+        user_contact = get_user_contact(data['from'])
         message = Message.objects.create(
-            author=author_user, 
+            contact=user_contact, 
             content=data['message'])
+        current_chat = get_current_chat(data['chatId'])
+        current_chat.messages.add(message)
+        current_chat.save()
         content = {
             'command': 'new_message',
             'message': self.message_to_json(message)
@@ -36,7 +39,8 @@ class ChatConsumer(WebsocketConsumer):
 
     def message_to_json(self, message):
         return {
-            'author': message.author.username,
+            'id': message.id,
+            'author': message.contact.user.username,
             'content': message.content,
             'timestamp': str(message.timestamp)
         }
@@ -45,10 +49,13 @@ class ChatConsumer(WebsocketConsumer):
         'fetch_messages': fetch_messages,
         'new_message': new_message
     }
+    
+    # CONNECT TO ROOM VIA WS    
 
     def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
+        print(self.room_name, ' --- ',self.room_group_name)
         async_to_sync(self.channel_layer.group_add)(
             self.room_group_name,
             self.channel_name
