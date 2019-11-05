@@ -1,0 +1,9 @@
+\contentsline {section}{\numberline {1}Giai \IeC {\dj }o\IeC {\d a}n m\IeC {\d \ocircumflex }t}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}T\IeC {\h \ocircumflex }ng quan v\IeC {\`\ecircumflex } c\IeC {\'a}c ch\IeC {\'\uhorn }c n\IeC {\u a}ng c\IeC {\h u}a \IeC {\'\uhorn }ng d\IeC {\d u}ng}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}C\IeC {\'a}c giao th\IeC {\'\uhorn }c s\IeC {\h \uhorn } d\IeC {\d u}ng cho t\IeC {\`\uhorn }ng ch\IeC {\'\uhorn }c n\IeC {\u a}ng}{2}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}WebSocket : }{2}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}REST API : }{3}{subsubsection.1.2.2}
+\contentsline {section}{\numberline {2}Giao \IeC {\dj }o\IeC {\d a}n hai}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Chi ti\IeC {\'\ecircumflex }t c\IeC {\'a}c ch\IeC {\'\uhorn }ng n\IeC {\u a}ng c\IeC {\h u}a \IeC {\'\uhorn }ng d\IeC {\d u}ng}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Ki\IeC {\'\ecircumflex }n tr\IeC {\'u}c c\IeC {\h u}a \IeC {\'\uhorn }ng d\IeC {\d u}ng : }{8}{subsection.2.2}
+\contentsline {section}{\numberline {3}M\IeC {\~a} ngu\IeC {\`\ocircumflex }n ch\IeC {\uhorn }\IeC {\ohorn }ng tr\IeC {\`\i }nh}{8}{section.3}
